@@ -9,7 +9,7 @@ A lightweight Linux container runtime built from scratch in C, featuring process
 | Name | SRN |
 |------|-----|
 | Diya R Gowda | PES1UG24CS159 |
-| Epari Subhransi | PS1UG24CS161 |
+| Epari Subhransi | PES1UG24CS161 |
 
 **Course:** Operating Systems  
 **Repository:** https://github.com/Diya-R-Gowda/OS-Jackfruit-Project
