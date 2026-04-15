@@ -8,8 +8,8 @@ A lightweight Linux container runtime built from scratch in C, featuring process
 
 | Name | SRN |
 |------|-----|
-| Diya R Gowda | (your SRN here) |
-| (Partner Name) | (Partner SRN here) |
+| Diya R Gowda | PES1UG24CS159 |
+| Epari Subhransi | PS1UG24CS161 |
 
 **Course:** Operating Systems  
 **Repository:** https://github.com/Diya-R-Gowda/OS-Jackfruit-Project
@@ -104,7 +104,7 @@ dmesg | tail -3   # verify: "[container_monitor] Module unloaded."
 
 The supervisor is compiled, started, and handles `start`, `ps`, and `stop` commands from the CLI. Container `alpha` is launched with PID 16573 and successfully stopped.
 
-![Supervisor running and handling start/ps/stop](screenshots/ss1_supervisor_running.png)
+![Supervisor running and handling start/ps/stop](ss1_supervisor_running.png)
 
 ---
 
@@ -112,7 +112,7 @@ The supervisor is compiled, started, and handles `start`, `ps`, and `stop` comma
 
 The client-side terminal sending `start`, `ps`, and `stop` commands to the running supervisor over the UNIX domain socket at `/tmp/mini_runtime.sock`.
 
-![CLI commands from Terminal 2](screenshots/ss2_cli_commands.png)
+![CLI commands from Terminal 2](ss2_cli_commands.png)
 
 ---
 
@@ -120,7 +120,7 @@ The client-side terminal sending `start`, `ps`, and `stop` commands to the runni
 
 Inside the container, `ps` shows only PID 1 (`/bin/sh`) and PID 5 (`ps`) — demonstrating complete PID namespace isolation. The container's root filesystem is also visible via `ls /`. The hostname is set to `container` via the UTS namespace.
 
-![PID namespace proof - supervisor terminal](screenshots/ss3_pid_namespace_terminal1.png)
+![PID namespace proof - supervisor terminal](ss3_pid_namespace_terminal1.png)
 
 ---
 
@@ -128,7 +128,7 @@ Inside the container, `ps` shows only PID 1 (`/bin/sh`) and PID 5 (`ps`) — dem
 
 The CLI terminal sending the `start` command that triggers the isolated container shown above.
 
-![PID namespace proof - CLI terminal](screenshots/ss4_pid_namespace_terminal2.png)
+![PID namespace proof - CLI terminal](ss4_pid_namespace_terminal2.png)
 
 ---
 
@@ -136,7 +136,7 @@ The CLI terminal sending the `start` command that triggers the isolated containe
 
 The supervisor receiving `start`, `logs`, `ps`, and `stop` commands. The `logs` command retrieves captured stdout/stderr from the container's log file, showing the bounded-buffer logging pipeline working end-to-end.
 
-![Logging output in supervisor](screenshots/ss5_logging_supervisor.png)
+![Logging output in supervisor](ss5_logging_supervisor.png)
 
 ---
 
@@ -144,7 +144,7 @@ The supervisor receiving `start`, `logs`, `ps`, and `stop` commands. The `logs` 
 
 The CLI terminal executing `start`, `logs`, `ps`, `stop`, and `logs` again in sequence, confirming the log file persists after the container stops.
 
-![Logging commands from CLI](screenshots/ss6_logging_cli.png)
+![Logging commands from CLI](ss6_logging_cli.png)
 
 ---
 
@@ -152,7 +152,7 @@ The CLI terminal executing `start`, `logs`, `ps`, `stop`, and `logs` again in se
 
 `dmesg | tail` showing the kernel module lifecycle: `Container Monitor Loaded`, a `SOFT LIMIT EXCEEDED` warning, a `HARD LIMIT EXCEEDED → killing process` event, and `Container Monitor Unloaded` — all from the `container_monitor` module.
 
-![Kernel module dmesg output](screenshots/ss7_kernel_module_dmesg.png)
+![Kernel module dmesg output](ss7_kernel_module_dmesg.png)
 
 ---
 
@@ -160,7 +160,7 @@ The CLI terminal executing `start`, `logs`, `ps`, `stop`, and `logs` again in se
 
 `dmesg | grep -E "Container Monitor|SOFT|HARD"` showing the memory monitoring events across two separate load/unload cycles, confirming the module correctly fires soft and hard limit events and cleans up on `rmmod`.
 
-![Kernel module grep filtered output](screenshots/ss8_kernel_module_grep.png)
+![Kernel module grep filtered output](ss8_kernel_module_grep.png)
 
 ---
 
