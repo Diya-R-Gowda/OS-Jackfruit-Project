@@ -104,6 +104,15 @@ dmesg | tail -3   # verify: "[container_monitor] Module unloaded."
 
 The supervisor is compiled, started, and handles `start`, `ps`, and `stop` commands from the CLI. Container `alpha` is launched with PID 16573 and successfully stopped.
 
+gcc engine.c -o engine
+./engine supervisor
+This starts the supervisor process
+It becomes a long-running daemon
+It:
+>creates a UNIX domain socket
+>waits for commands from CLI
+>manages all containers
+
 ![Supervisor running and handling start/ps/stop](ss1_supervisor_running.png)
 
 ---
