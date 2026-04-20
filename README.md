@@ -113,6 +113,11 @@ It:
 >waits for commands from CLI
 >manages all containers
 
+In this screenshot, we start the supervisor, which is a long-running process responsible for managing all containers.
+When the start alpha command is received, the supervisor creates a new container using clone() with PID, mount, and UTS namespaces.
+The container is assigned PID 16573.
+The ps command shows that the supervisor maintains metadata about running containers.
+Finally, the stop command terminates the container, demonstrating full lifecycle management.”
 ![Supervisor running and handling start/ps/stop](ss1_supervisor_running.png)
 
 ---
