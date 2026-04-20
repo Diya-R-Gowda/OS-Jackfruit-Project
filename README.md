@@ -160,7 +160,13 @@ The CLI terminal sending the `start` command that triggers the isolated containe
 ### Screenshot 5 — Logging: Supervisor Output
 
 The supervisor receiving `start`, `logs`, `ps`, and `stop` commands. The `logs` command retrieves captured stdout/stderr from the container's log file, showing the bounded-buffer logging pipeline working end-to-end.
-
+This screenshot demonstrates the logging system implemented in the supervisor.
+When the container is started, its stdout and stderr are redirected to a pipe.
+The supervisor reads from this pipe using a producer thread and pushes the data into a bounded buffer.
+A dedicated logger thread consumes this buffer and writes the output to a log file.
+The logs command retrieves this stored output.
+We can see both normal output (‘hello’) and error output (execve failure), proving that both stdout and stderr are captured.
+Even after stopping the container, the logs are still accessible, showing that logging is persistent and decoupled from container execution.”
 ![Logging output in supervisor](ss5_logging_supervisor.png)
 
 ---
