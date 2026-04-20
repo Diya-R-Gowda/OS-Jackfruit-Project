@@ -139,6 +139,12 @@ This demonstrates a client-server architecture similar to Docker, where the CLI 
 
 Inside the container, `ps` shows only PID 1 (`/bin/sh`) and PID 5 (`ps`) — demonstrating complete PID namespace isolation. The container's root filesystem is also visible via `ls /`. The hostname is set to `container` via the UTS namespace.
 
+“In this screenshot, we demonstrate container isolation using Linux namespaces.
+When the container is started, the supervisor uses clone() with PID, UTS, and mount namespaces.
+Inside the container, the hostname command shows a different hostname, proving UTS isolation.
+The ls / output shows a separate filesystem due to mount namespace and chroot.
+Most importantly, the ps command shows only two processes — PID 1 and PID 5 — which confirms complete PID namespace isolation, as the container cannot see host processes.”
+
 ![PID namespace proof - supervisor terminal](ss3_pid_namespace_terminal1.png)
 
 ---
