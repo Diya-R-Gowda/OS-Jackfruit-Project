@@ -167,6 +167,7 @@ A dedicated logger thread consumes this buffer and writes the output to a log fi
 The logs command retrieves this stored output.
 We can see both normal output (‘hello’) and error output (execve failure), proving that both stdout and stderr are captured.
 Even after stopping the container, the logs are still accessible, showing that logging is persistent and decoupled from container execution.”
+
 ![Logging output in supervisor](ss5_logging_supervisor.png)
 
 ---
