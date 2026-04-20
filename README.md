@@ -176,6 +176,13 @@ Even after stopping the container, the logs are still accessible, showing that l
 
 The CLI terminal executing `start`, `logs`, `ps`, `stop`, and `logs` again in sequence, confirming the log file persists after the container stops.
 
+“This screenshot shows the CLI side of the logging system.
+The CLI sends commands like start, logs, ps, and stop to the supervisor via a UNIX domain socket.
+When we run logs, the supervisor retrieves the container’s output from a log file.
+After stopping the container, we run logs again and still see the same output.
+This confirms that logging is persistent and independent of the container’s execution.”
+
+
 ![Logging commands from CLI](ss6_logging_cli.png)
 
 ---
