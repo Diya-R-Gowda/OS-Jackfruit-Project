@@ -126,11 +126,16 @@ Finally, the stop command terminates the container, demonstrating full lifecycle
 
 The client-side terminal sending `start`, `ps`, and `stop` commands to the running supervisor over the UNIX domain socket at `/tmp/mini_runtime.sock`.
 
+“This screenshot shows the CLI side of the system running in a separate terminal.
+The CLI does not directly create or manage containers; instead, it communicates with the supervisor using a UNIX domain socket located at /tmp/mini_runtime.sock.
+Each command like start, ps, and stop is sent as a request to the supervisor, which performs the actual operation.
+This demonstrates a client-server architecture similar to Docker, where the CLI is lightweight and the supervisor handles all container management.”
 ![CLI commands from Terminal 2](ss2_cli_commands.png)
 
 ---
 
 ### Screenshot 3 — PID Namespace Isolation (Supervisor Terminal)
+
 
 Inside the container, `ps` shows only PID 1 (`/bin/sh`) and PID 5 (`ps`) — demonstrating complete PID namespace isolation. The container's root filesystem is also visible via `ls /`. The hostname is set to `container` via the UTS namespace.
 
